@@ -368,6 +368,21 @@
 
     .utility-card li + li { margin-top: 5px; }
 
+    .distance-map-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .distance-map-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+    }
+
     .checklist { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
 
     .checklist li { display: flex; gap: 10px; align-items: flex-start; }
@@ -424,6 +439,8 @@
       .timeline-card { padding: 18px; }
       .utility-grid { grid-template-columns: 1fr; }
       .utility-card { min-height: auto; }
+      .distance-map-card { padding: 8px; border-radius: 20px; }
+      .distance-map-card img { border-radius: 14px; }
       .footer { display: block; }
       .back-top { display: inline-block; margin-top: 9px; }
     }
@@ -441,6 +458,7 @@
         <a class="brand" href="#top"><span class="brand-mark">宁</span><span>JINLING / 慢游南京</span></a>
         <div class="top-links">
           <a href="#itinerary">行程</a>
+          <a href="#zhongshan">钟山</a>
           <a href="#tips">提醒</a>
           <a href="#food">吃什么</a>
         </div>
@@ -526,26 +544,42 @@
         </article>
 
         <article class="day-panel" id="day-2" role="tabpanel" data-panel="2" hidden>
-          <div class="day-intro"><strong>第二天｜把上午交给山林</strong><span>中山陵 → 午休 → 玄武湖一小段</span></div>
+          <div class="day-intro"><strong>第二天｜把上午交给钟山</strong><span>梧桐大道 → 音乐台 → 中山陵 → 玄武湖</span></div>
           <div class="timeline">
             <div class="timeline-item">
               <div class="time">09:00—09:45</div>
               <div class="timeline-card">
-                <h3>前往中山陵景区</h3>
-                <p>建议直接网约车到景区，少一次换乘；入园规则和预约时间以出发日期的官方渠道为准。</p>
+                <h3>前往梧桐大道</h3>
+                <p>建议直接网约车到梧桐大道或陵园路主段入口，少一次换乘；景区入园规则和预约时间以出发日期的官方渠道为准。</p>
                 <div class="tag-row"><span class="tag">舒适鞋</span><span class="tag">尽量早出发</span></div>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">09:45—12:30</div>
+              <div class="time">09:45—10:30</div>
               <div class="timeline-card">
-                <h3>中山陵主线</h3>
-                <p>走主线即可；音乐台看体力决定，不建议同一上午再塞进明孝陵、美龄宫等多个点。</p>
-                <div class="tag-row"><span class="tag">约 2.5—3 小时</span><span class="tag">台阶较多</span></div>
+                <h3>梧桐大道</h3>
+                <p>沿陵园路主段慢慢走，拍照和看树影即可，不需要把整条路走完。</p>
+                <div class="tag-row"><span class="tag">约 45 分钟</span><span class="tag">平缓散步</span></div>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">12:30—14:00</div>
+              <div class="time">10:45—11:45</div>
+              <div class="timeline-card">
+                <h3>音乐台</h3>
+                <p>从梧桐大道方向步行或短途接驳前往；音乐台和中山陵距离近，适合作为同一组游览。</p>
+                <div class="tag-row"><span class="tag">步行约 20—30 分钟</span><span class="tag">以当天入口为准</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">12:00—13:30</div>
+              <div class="timeline-card">
+                <h3>中山陵主线</h3>
+                <p>音乐台后再走中山陵主线，台阶较多，慢慢走即可；明孝陵、美龄宫、灵谷寺留作下次或接驳加点。</p>
+                <div class="tag-row"><span class="tag">约 1.5 小时</span><span class="tag">台阶较多</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">13:30—15:00</div>
               <div class="timeline-card">
                 <h3>午餐＋完整休息</h3>
                 <p>在景区附近解决午餐后再出发，不为了赶下午景点而压缩休息时间。</p>
@@ -553,7 +587,7 @@
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">14:30—17:00</div>
+              <div class="time">15:30—17:30</div>
               <div class="timeline-card">
                 <h3>玄武湖：只走解放门—台城段</h3>
                 <p>这一段景色完整、强度适中，不必环湖。若状态很好，再从鸡鸣寺和台城中选一个短逛。</p>
@@ -570,6 +604,33 @@
             </div>
           </div>
         </article>
+      </section>
+
+      <section class="section" id="zhongshan" aria-labelledby="zhongshan-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">ZHONGSHAN AREA</p>
+            <h2 id="zhongshan-title">钟山，怎么选。</h2>
+          </div>
+          <p>这是一张决策示意图，不是导航地图；梧桐大道按陵园路中段估算，实际距离随入口变化。</p>
+        </div>
+        <div class="distance-map-card">
+          <img src="zhongshan-distance-diagram.svg" alt="钟山景区梧桐大道、美龄宫、明孝陵、音乐台、中山陵和灵谷寺的距离关系示意图">
+        </div>
+        <div class="utility-grid" style="margin-top: 16px;">
+          <article class="utility-card">
+            <h3>想看音乐台</h3>
+            <p>把“音乐台＋中山陵”作为一组：两点直线约 0.4 km，实际步行约 10—15 分钟，是最适合连逛的一组。</p>
+          </article>
+          <article class="utility-card">
+            <h3>想看梧桐和明孝陵</h3>
+            <p>走“梧桐大道＋美龄宫＋明孝陵”：美龄宫离梧桐大道很近，明孝陵再往北约 1.5—2.5 km 步行，热天建议接驳。</p>
+          </article>
+          <article class="utility-card">
+            <h3>想把灵谷寺也加上</h3>
+            <p>灵谷寺与中山陵直线约 1.4 km、与明孝陵约 2.7 km，不建议全程徒步串联；把它作为接驳到达的最后一站更轻松。</p>
+          </article>
+        </div>
       </section>
 
       <section class="section" id="tips" aria-labelledby="tips-title">
@@ -614,7 +675,7 @@
         <div class="utility-grid">
           <article class="utility-card">
             <h3>高温 / 下雨</h3>
-            <p>第二天只保留中山陵上午，下午改成休息或室内活动；第一天保留德基午饭和馆内活动，夜游视天气取消。</p>
+            <p>第二天只保留梧桐大道、音乐台和中山陵上午，下午改成休息或室内活动；第一天保留德基午饭和馆内活动，夜游视天气取消。</p>
           </article>
           <article class="utility-card">
             <h3>想看更多明代遗迹</h3>
