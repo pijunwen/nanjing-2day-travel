@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f1e9">
+  <meta name="description" content="南京两天慢游计划：城市人文、紫金山半日与秦淮夜色。">
+  <title>慢游南京｜2 天游览计划</title>
+  <style>
+    :root {
+      --ink: #213236;
+      --ink-soft: #52615f;
+      --muted: #7c8782;
+      --pine: #2f625d;
+      --pine-deep: #234b48;
+      --terracotta: #c77e50;
+      --cream: #f5f1e9;
+      --paper: #fcfaf5;
+      --line: #e4ddd2;
+      --white: #fffdf8;
+      --shadow: 0 20px 60px rgba(44, 57, 53, .11);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; }
+
+    .page-shell { overflow: hidden; }
+
+    .topbar {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px clamp(20px, 6vw, 88px);
+      color: #fff;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: .16em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+      font-size: 12px;
+      letter-spacing: 0;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 22px;
+      font-size: 13px;
+      color: rgba(255,255,255,.86);
+    }
+
+    .top-links a:hover { color: #fff; }
+
+    .hero {
+      position: relative;
+      min-height: min(760px, 86vh);
+      display: flex;
+      align-items: flex-end;
+      padding: 150px clamp(20px, 9vw, 132px) 88px;
+      isolation: isolate;
+      background: var(--pine-deep);
+    }
+
+    .hero-art {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(22,43,43,.78) 0%, rgba(22,43,43,.35) 52%, rgba(22,43,43,.1) 100%), linear-gradient(0deg, rgba(19,34,34,.72) 0%, rgba(19,34,34,.05) 67%);
+    }
+
+    .hero-copy { max-width: 740px; color: #fff; }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #efd2b9;
+      font-size: 13px;
+      letter-spacing: .2em;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 680px;
+      margin-bottom: 18px;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      font-size: clamp(48px, 8vw, 94px);
+      line-height: 1.08;
+      letter-spacing: -.06em;
+      font-weight: 600;
+    }
+
+    .hero-lede {
+      max-width: 520px;
+      margin-bottom: 30px;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .meta-pill {
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+    }
+
+    .content {
+      width: min(1160px, calc(100% - 40px));
+      margin: -54px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      padding: clamp(24px, 4vw, 44px);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .section-kicker {
+      margin-bottom: 11px;
+      color: var(--terracotta);
+      font-size: 12px;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    .overview h2 {
+      margin-bottom: 12px;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.25;
+      letter-spacing: -.04em;
+      font-weight: 600;
+    }
+
+    .overview-copy { margin-bottom: 0; color: var(--ink-soft); }
+
+    .overview-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-content: center;
+    }
+
+    .stat {
+      min-height: 108px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.55);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--pine);
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .section { padding: 96px 0 0; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.18;
+      letter-spacing: -.05em;
+      font-weight: 600;
+    }
+
+    .section-heading p { max-width: 420px; margin-bottom: 3px; color: var(--muted); font-size: 14px; }
+
+    .day-switcher {
+      position: sticky;
+      z-index: 4;
+      top: 16px;
+      display: inline-flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(252,250,245,.88);
+      box-shadow: 0 8px 24px rgba(55,64,58,.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .day-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 19px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .day-button:hover { transform: translateY(-1px); color: var(--pine); }
+
+    .day-button[aria-selected="true"] { color: #fff; background: var(--pine); }
+
+    .day-panel { display: none; }
+
+    .day-panel.is-active { display: block; animation: panel-in .35s ease both; }
+
+    @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .day-intro {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+      padding: 18px 22px;
+      border-left: 4px solid var(--terracotta);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      color: var(--ink-soft);
+      background: #eee8dd;
+    }
+
+    .day-intro strong { color: var(--ink); white-space: nowrap; }
+
+    .timeline { position: relative; padding-left: 46px; }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      bottom: 16px;
+      left: 15px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      gap: 24px;
+      padding: 0 0 28px;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: -36px;
+      width: 9px;
+      height: 9px;
+      border: 4px solid var(--cream);
+      border-radius: 50%;
+      background: var(--terracotta);
+      box-shadow: 0 0 0 1px var(--terracotta);
+    }
+
+    .time { padding-top: 3px; color: var(--pine); font-size: 14px; font-weight: 800; }
+
+    .timeline-card {
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+    }
+
+    .timeline-card h3 { margin-bottom: 5px; font-size: 20px; line-height: 1.35; }
+
+    .timeline-card p { margin-bottom: 0; color: var(--ink-soft); font-size: 14px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+
+    .tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: var(--pine);
+      background: #e5efeb;
+      font-size: 12px;
+    }
+
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .utility-card {
+      min-height: 210px;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      box-shadow: 0 12px 36px rgba(44, 57, 53, .06);
+    }
+
+    .utility-card h3 { margin-bottom: 8px; font-size: 18px; }
+
+    .utility-card p, .utility-card li { color: var(--ink-soft); font-size: 14px; }
+
+    .utility-card ul { margin: 10px 0 0; padding-left: 19px; }
+
+    .utility-card li + li { margin-top: 5px; }
+
+    .checklist { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+
+    .checklist li { display: flex; gap: 10px; align-items: flex-start; }
+
+    .check {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      margin-top: 3px;
+      border: 1px solid #a9c3b8;
+      border-radius: 50%;
+      color: var(--pine);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 96px;
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .back-top { color: var(--pine); font-weight: 700; }
+
+    @media (max-width: 760px) {
+      .topbar { padding: 20px; }
+      .top-links { display: none; }
+      .hero { min-height: 680px; padding: 130px 20px 60px; }
+      .hero::after { background: linear-gradient(90deg, rgba(22,43,43,.72), rgba(22,43,43,.2)), linear-gradient(0deg, rgba(19,34,34,.78), rgba(19,34,34,.05) 68%); }
+      .content { width: min(100% - 28px, 620px); margin-top: -30px; }
+      .overview { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+      .overview-stats { gap: 9px; }
+      .stat { min-height: 88px; padding: 15px; }
+      .stat strong { font-size: 23px; }
+      .section { padding-top: 68px; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 12px; }
+      .day-switcher { top: 10px; }
+      .day-intro { display: block; padding: 15px 17px; }
+      .day-intro strong { display: block; margin-bottom: 3px; }
+      .timeline { padding-left: 29px; }
+      .timeline::before { left: 8px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; padding-bottom: 19px; }
+      .timeline-item::before { left: -27px; }
+      .time { font-size: 13px; }
+      .timeline-card { padding: 18px; }
+      .utility-grid { grid-template-columns: 1fr; }
+      .utility-card { min-height: auto; }
+      .footer { display: block; }
+      .back-top { display: inline-block; margin-top: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="page-shell">
+    <header class="hero" aria-labelledby="page-title">
+      <nav class="topbar" aria-label="页面导航">
+        <a class="brand" href="#top"><span class="brand-mark">宁</span><span>JINLING / 慢游南京</span></a>
+        <div class="top-links">
+          <a href="#itinerary">行程</a>
+          <a href="#tips">提醒</a>
+          <a href="#food">吃什么</a>
+        </div>
+      </nav>
+      <img class="hero-art" src="imagegen/nanjing-slow-travel-cover.png" alt="秦淮河、城墙与远山组成的南京旅行氛围插画">
+      <div class="hero-copy">
+        <p class="eyebrow">2 DAYS / NANJING</p>
+        <h1 id="page-title">慢一点，<br>看见金陵。</h1>
+        <p class="hero-lede">一份不赶景点的南京初游计划：城市人文、紫金山半日与秦淮夜色，每天留出真正可以休息的空白。</p>
+        <div class="hero-meta" aria-label="行程概览">
+          <span class="meta-pill">建议住：新街口 / 大行宫</span>
+          <span class="meta-pill">节奏：每天两段核心游览</span>
+          <span class="meta-pill">交通：地铁＋短途网约车</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="overview" aria-labelledby="overview-title">
+        <div>
+          <p class="section-kicker">THE IDEA</p>
+          <h2 id="overview-title">把时间留给城市，<br>而不是留给赶路。</h2>
+          <p class="overview-copy">以大行宫和新街口为中转点，第一天向东看近代南京，晚上去秦淮河；第二天把整段上午交给紫金山，下午只走玄武湖的一小段。累了随时删掉可选项，主线仍然成立。</p>
+        </div>
+        <div class="overview-stats" aria-label="行程数据">
+          <div class="stat"><strong>2</strong><span>天慢游</span></div>
+          <div class="stat"><strong>4</strong><span>个核心片区</span></div>
+          <div class="stat"><strong>1 h</strong><span>每天机动时间</span></div>
+          <div class="stat"><strong>0</strong><span>强制打卡点</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="itinerary" aria-labelledby="itinerary-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">THE ROUTE</p>
+            <h2 id="itinerary-title">两天，刚刚好。</h2>
+          </div>
+          <p>默认 09:30 左右出发，晚上 21:00 前收尾。每个“可选”都可以放心跳过。</p>
+        </div>
+
+        <div class="day-switcher" role="tablist" aria-label="选择行程日">
+          <button class="day-button" type="button" role="tab" aria-selected="true" aria-controls="day-1" data-day="1">Day 1 · 城市人文</button>
+          <button class="day-button" type="button" role="tab" aria-selected="false" aria-controls="day-2" data-day="2">Day 2 · 紫金山</button>
+        </div>
+
+        <article class="day-panel is-active" id="day-1" role="tabpanel" data-panel="1">
+          <div class="day-intro"><strong>第一天｜先认识南京</strong><span>南京博物院 → 总统府 → 秦淮夜色</span></div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">09:30—12:00</div>
+              <div class="timeline-card">
+                <h3>南京博物院</h3>
+                <p>建议重点看历史馆，再选一个专题馆；不用追求“全部逛完”，给脚和眼睛都留一点余量。</p>
+                <div class="tag-row"><span class="tag">需提前确认预约</span><span class="tag">约 2—2.5 小时</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">12:00—13:30</div>
+              <div class="timeline-card">
+                <h3>午餐＋午休</h3>
+                <p>回大行宫或新街口一带吃饭。午休不是浪费时间，是为了让晚上的秦淮河不变成“最后一项任务”。</p>
+                <div class="tag-row"><span class="tag">不安排跨区移动</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">14:00—16:30</div>
+              <div class="timeline-card">
+                <h3>总统府</h3>
+                <p>看近代史展陈和园林空间，建议预留 2—2.5 小时。出来后可以在附近坐一会儿，不必立刻赶下一站。</p>
+                <div class="tag-row"><span class="tag">大行宫片区</span><span class="tag">约 2—2.5 小时</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">16:30—17:30</div>
+              <div class="timeline-card">
+                <h3>1912 街区散步 <small>可选</small></h3>
+                <p>适合想继续走走的人；如果天气热、脚累或博物院逛得比较深，直接跳过。</p>
+                <div class="tag-row"><span class="tag">弹性时间</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">18:00—21:00</div>
+              <div class="timeline-card">
+                <h3>晚餐＋老门东 / 夫子庙二选一</h3>
+                <p>老门东适合逛老街、吃小吃；夫子庙适合看秦淮河灯影。夜游船排队较长时，沿河散步即可。</p>
+                <div class="tag-row"><span class="tag">只选一个夜游片区</span><span class="tag">人多时晚一点去</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="day-panel" id="day-2" role="tabpanel" data-panel="2" hidden>
+          <div class="day-intro"><strong>第二天｜把上午交给山林</strong><span>中山陵 → 午休 → 玄武湖一小段</span></div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">09:00—09:45</div>
+              <div class="timeline-card">
+                <h3>前往中山陵景区</h3>
+                <p>建议直接网约车到景区，少一次换乘；入园规则和预约时间以出发日期的官方渠道为准。</p>
+                <div class="tag-row"><span class="tag">舒适鞋</span><span class="tag">尽量早出发</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">09:45—12:30</div>
+              <div class="timeline-card">
+                <h3>中山陵主线</h3>
+                <p>走主线即可；音乐台看体力决定，不建议同一上午再塞进明孝陵、美龄宫等多个点。</p>
+                <div class="tag-row"><span class="tag">约 2.5—3 小时</span><span class="tag">台阶较多</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">12:30—14:00</div>
+              <div class="timeline-card">
+                <h3>午餐＋完整休息</h3>
+                <p>在景区附近解决午餐后再出发，不为了赶下午景点而压缩休息时间。</p>
+                <div class="tag-row"><span class="tag">留足 1 小时休息</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">14:30—17:00</div>
+              <div class="timeline-card">
+                <h3>玄武湖：只走解放门—台城段</h3>
+                <p>这一段景色完整、强度适中，不必环湖。若状态很好，再从鸡鸣寺和台城中选一个短逛。</p>
+                <div class="tag-row"><span class="tag">约 2—2.5 小时</span><span class="tag">可随时结束</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">18:00 以后</div>
+              <div class="timeline-card">
+                <h3>晚餐＋自由活动</h3>
+                <p>回新街口或在玄武门附近吃饭。晚上不再安排必须到场的景点，留给返程、购物或临时喜欢上的小店。</p>
+                <div class="tag-row"><span class="tag">不安排第三场游览</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="tips" aria-labelledby="tips-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">KEEP IT EASY</p>
+            <h2 id="tips-title">让行程轻一点。</h2>
+          </div>
+          <p>这些提醒比多塞一个景点更有用。</p>
+        </div>
+        <div class="utility-grid">
+          <article class="utility-card">
+            <h3>预约与开放</h3>
+            <ul class="checklist">
+              <li><span class="check">✓</span><span>出发前确认南京博物院、总统府、中山陵的预约和闭馆安排。</span></li>
+              <li><span class="check">✓</span><span>周末或节假日把秦淮夜游放到 20:00 后，避开最拥挤时段。</span></li>
+            </ul>
+          </article>
+          <article class="utility-card">
+            <h3>交通与体力</h3>
+            <ul class="checklist">
+              <li><span class="check">✓</span><span>市区优先地铁，去中山陵用短途网约车减少换乘。</span></li>
+              <li><span class="check">✓</span><span>中山陵台阶较多，穿舒适鞋；夏天准备水、防晒和薄外套。</span></li>
+            </ul>
+          </article>
+          <article class="utility-card" id="food">
+            <h3>吃什么</h3>
+            <p>盐水鸭、鸭血粉丝汤、皮肚面、鸡鸣汤包，再安排一顿金陵菜。小吃分散着吃，不必一天完成“美食打卡”。</p>
+            <div class="tag-row"><span class="tag">老门东</span><span class="tag">夫子庙</span><span class="tag">新街口</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="backup-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">BACKUP PLAN</p>
+            <h2 id="backup-title">累了，就这样删。</h2>
+          </div>
+          <p>删减后主线仍然完整，不需要为了“计划表”硬撑。</p>
+        </div>
+        <div class="utility-grid">
+          <article class="utility-card">
+            <h3>高温 / 下雨</h3>
+            <p>第二天只保留中山陵上午，下午改成休息或室内活动；第一天直接删掉 1912 和夜游。</p>
+          </article>
+          <article class="utility-card">
+            <h3>想看更多明代遗迹</h3>
+            <p>把第二天的中山陵替换成“明孝陵＋美龄宫”，两处同片区，仍然只安排半天主线。</p>
+          </article>
+          <article class="utility-card">
+            <h3>返程时间较早</h3>
+            <p>第二天午餐后直接回市区，不安排玄武湖；把玄武湖留作下一次南京旅行的轻松收尾。</p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>南京两天慢游计划 · 以出发日期的官方公告为准</span>
+        <a class="back-top" href="#top">回到顶部 ↑</a>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll('[data-day]'));
+    const panels = Array.from(document.querySelectorAll('[data-panel]'));
+
+    function selectDay(day) {
+      buttons.forEach((button) => {
+        const active = button.dataset.day === day;
+        button.setAttribute('aria-selected', String(active));
+      });
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === day;
+        panel.classList.toggle('is-active', active);
+        panel.hidden = !active;
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => selectDay(button.dataset.day));
+    });
+  </script>
+</body>
+</html>
